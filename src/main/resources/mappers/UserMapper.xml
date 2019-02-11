@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.common.lightweight.mapper.UserMapper">
+
+    <!-- xml中的转义:大于号 &gt; 小于号 &lt; 单引号 &apos; 双引号 &quot; &和 &amp;-->
+    <select id="selectUserDev" resultType="com.common.lightweight.domain.dao.UserDO">
+      select id, firstname, lastname, bocsSkills from users where type = 'User' and id > 1 and status = 1 and bocsType = 'dev' order by bocsSkills
+    </select>
+
+</mapper>

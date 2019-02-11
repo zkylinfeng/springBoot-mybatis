@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2017 BOC Services（Kunshan）Co.,Ltd.
+  -->
+
+<configuration monitorinterval="30" status="INFO">
+    <properties>
+        <property name="PATTERN_LOG" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] - [%t:%r] %logger%n%m%n"/>
+        <property name="FILE_NAME" value="commonLightweight"/>
+        <property name="FILE_PATH" value="logs"/>
+    </properties>
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout>
+                <charset>UTF-8</charset>
+                <pattern>${PATTERN_LOG}</pattern>
+            </PatternLayout>
+        </Console>
+        <RollingRandomAccessFile name="RollingFile" fileName="${FILE_PATH}/${FILE_NAME}.log" filePattern="${FILE_PATH}/$${date:yyyy-MM}/${FILE_NAME}-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout>
+                <charset>UTF-8</charset>
+                <pattern>${PATTERN_LOG}</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="10M"/>
+            </Policies>
+        </RollingRandomAccessFile>
+    </appenders>
+    <loggers>
+        <root level="INFO">
+            <appender-ref ref="Console"/>
+            <appender-ref ref="RollingFile"/>
+        </root>
+    </loggers>
+</configuration>

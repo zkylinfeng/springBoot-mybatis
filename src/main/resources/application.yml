@@ -1,0 +1,25 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/mysqldata?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false
+    username: root
+    password: root
+    driver: com.mysql.jdbc.Driver
+# JDBC Pool
+    type: com.zaxxer.hikari.HikariDataSource
+    poolName: HikariCP
+    maximumPoolSize: 5
+    minimumIdle: 1
+    connectionTimeout: 30000
+    idleTimeout: 30000
+    pool-prepared-statements: true
+    max-open-prepared-statements: 50
+
+mybatis:
+  #type-aliases-package: com.bocs.netbank.serviceboctrans.domain
+  mapper-locations: classpath:mappers/*Mapper.xml
+
+logging:
+  config: classpath:log4j2.xml
