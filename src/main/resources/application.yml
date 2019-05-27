@@ -18,7 +18,6 @@ spring:
     max-open-prepared-statements: 50
 
 mybatis:
-  #type-aliases-package: com.bocs.netbank.serviceboctrans.domain
   mapper-locations: classpath:mappers/*Mapper.xml
 
 logging:
